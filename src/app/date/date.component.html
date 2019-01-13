@@ -1,0 +1,59 @@
+<div>
+  <h3>Today is {{message}}</h3>
+</div>
+<div>
+  <h3>Time: {{currentTime}}</h3>
+  <div class=title>*ngFor</div>
+  <p *ngFor="let item of items; let i = index;
+  let first = first; let last = last; let even = even; let odd = odd;"
+  [ngClass]="{first: first, last: last, even: even, odd:odd}">
+    {{i+1}} {{item}}
+  </p>
+  </div>
+  <div class=title>*ngIf</div>
+  
+  <ng-template *ngIf="isloggedIn; then loggedIn; else loggedOut">
+
+  </ng-template>
+  
+  <ng-template #loggedIn>
+      Logged in.
+    </ng-template>
+
+  <ng-template #loggedOut>
+    Login please!
+  </ng-template>
+
+  <div class=title> Event: Click</div>
+<button *ngIf="isCollapsed" (click)="toggleCollapse()">Hide</button>
+<button *ngIf="!isCollapsed" (click)="toggleCollapse()">Show</button>
+<div *ngIf="isCollapsed">
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, 
+    asperiores autem illum repellat sequi accusantium id nisi quae 
+    necessitatibus maiores praesentium cupiditate soluta, fugiat in aut 
+    error reprehenderit totam. Voluptatum!</p>
+</div>
+
+<div class=title> ngModel</div>
+<input type="text" [(ngModel)]="text">
+<p>{{text}}</p>
+
+<div class=title> ngStyle, ngClass</div>
+<div [ngClass]="{class1: true}">
+  <h1>Hello World!</h1>
+  <p [ngClass]="{class2: true}">Lorem ipsum dolor sit amet consectetur, 
+    adipisicing elit. Unde, labore.</p>
+</div>
+<div [ngStyle]="{'color': 'yellow'}">
+  <h1> World Hello!</h1>
+  <p  [ngStyle]="{'color': 'grey'}">Lorem ipsum dolor sit amet consectetur, 
+    adipisicing elit. Unde, labore.</p>
+</div>
+
+<div class=title>Dynamic styling of components</div>
+<div [ngClass]="{invisible: visibility}">
+    <h1>Hello World!</h1>
+    <p>Lorem ipsum dolor sit amet consectetur, 
+      adipisicing elit. Unde, labore.</p>
+  </div>
+  <button (click)="toggle()">Toggle</button>
